@@ -41,26 +41,27 @@ const getRemoteBooks = function () {
       cartButton.forEach((button) => {
         button.addEventListener("click", addToCart);
       });
-    });
+    })
 
-  // .catch((err) => {
-  //   alert("ERROR", err);
-  // });
+    .catch((err) => {
+      alert("ERROR", err);
+    });
 };
 
 const discard = function () {
   this.parentNode.parentNode.parentNode.parentNode.classList.add("d-none");
 };
 
+let storagedItems = [];
 const addToCart = function () {
   const selectedTitle = document.querySelectorAll("h5");
   this.classList.add("selected");
   const cartButton = document.querySelectorAll(".cart-btn");
   cartButton.forEach((button, i) => {
     if (button.classList.contains("selected")) {
+      storagedItems.push(selectedTitle[i].innerText);
       const ul = document.querySelector("ul");
       const newLi = document.createElement("li");
-      console.log(selectedTitle[i]);
       newLi.innerText = selectedTitle[i].innerText;
       ul.appendChild(newLi);
     }
@@ -68,5 +69,8 @@ const addToCart = function () {
   cartButton.forEach((button) => {
     button.classList.remove("selected");
   });
+
+  sessionStorage.setItem("selectedBooks", storagedItems);
+  console.log(sessionStorage.getItem("selectedBooks"));
 };
 getRemoteBooks();
