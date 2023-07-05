@@ -23,8 +23,8 @@ const getRemoteBooks = function () {
                 <h5 class="card-title">${book.title}</h5>
                  <p class="card-text">Price: $${book.price}</p>
                  <div class="container">
-                <a class="btn btn-primary discard-btn ">Discard</a>
-                <a class="btn btn-primary cart-btn ">Add To Cart</a>
+                <a class="btn btn-danger discard-btn ">Discard</a>
+                <a class="btn btn-warning cart-btn ">Add To Cart</a>
                 </div>
             </div>
         </div>
